@@ -20,7 +20,7 @@ echo '<role rolename="manager-jmx"/>' >> /etc/tomcat7/tomcat-users.xml
 echo '<role rolename="admin-gui"/>' >> /etc/tomcat7/tomcat-users.xml
 echo '<role rolename="admin-script"/>' >> /etc/tomcat7/tomcat-users.xml
 echo "<user username=\"admin\" password=\"${PASS}\" roles=\"manager-gui,manager-script,manager-jmx,admin-gui, admin-script\"/>" >> ${TOMCAT_CONFIG_DIR}/tomcat-users.xml
-echo '</tomcat-users>' >> /etc/tomcat7/tomcat-users.xml 
+echo '</tomcat-users>' >> /etc/tomcat7/tomcat-users.xml
 echo "=> Done!"
 
 touch ${TOMCAT_CONFIGURATION_FLAG}
@@ -31,4 +31,3 @@ echo ""
 echo "    admin:${PASS}"
 echo ""
 echo "========================================================================"
-

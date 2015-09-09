@@ -1,6 +1,6 @@
 ############################################################
 # Dockerfile to run Apache usergrid_
-# Based on Ubuntu Image
+# Based on gaborwnuk/usergrid mixed with pushion baseimage
 ############################################################
 
 #  http://phusion.github.io/baseimage-docker/
