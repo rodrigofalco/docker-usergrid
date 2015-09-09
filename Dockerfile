@@ -3,10 +3,25 @@
 # Based on Ubuntu Image
 ############################################################
 
-# Set the base image to use to Ubuntu
-FROM ubuntu
+#  http://phusion.github.io/baseimage-docker/
+#
+# Use phusion/baseimage as base image. To make your builds
+# reproducible, make sure you lock down to a specific version, not
+# to `latest`! See
+# https://github.com/phusion/baseimage-docker/blob/master/Changelog.md
+# for a list of version numbers.
+FROM phusion/baseimage:0.9.17
 
-MAINTAINER Gabor Wnuk <gabor.wnuk@me.com>
+# Use baseimage-docker's init system.
+CMD ["/sbin/my_init"]
+
+# ...put your own build instructions here...
+
+
+# Set the base image to use to Ubuntu
+#FROM ubuntu
+
+MAINTAINER Rodrigo Falco <rodrigo@patagonian.it>
 
 ENV TOMCAT_CONFIGURATION_FLAG /usergrid/.tomcat_admin_created
 
@@ -22,7 +37,7 @@ ADD create_tomcat_admin_user.sh /usergrid/create_tomcat_admin_user.sh
 ADD run.sh /usergrid/run.sh
 RUN chmod +x /usergrid/*.sh
 RUN ln -s /etc/tomcat7/ /usr/share/tomcat7/conf
- 
+
 #
 # Just to suppress tomcat warnings.
 #
@@ -44,4 +59,14 @@ RUN ln -s /usr/share/tomcat7/webapps/ /etc/tomcat7/webapps
 #
 EXPOSE 8080
 
-ENTRYPOINT ./run.sh
+#ENTRYPOINT ./run.sh
+
+# Configure tomcat to start
+### In Dockerfile:
+RUN mkdir /etc/service/usergrid
+ADD run.sh /etc/service/usergrid/run
+
+
+# Added rfalco
+# Clean up APT when done.
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
