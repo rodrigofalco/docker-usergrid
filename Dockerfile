@@ -65,7 +65,7 @@ EXPOSE 8080
 ### In Dockerfile:
 RUN mkdir /etc/service/usergrid
 ADD run.sh /etc/service/usergrid/run
-RUN chmod +x /etc/service/usergrid/run
+RUN chmod a+x /etc/service/usergrid/run
 
 
 # Added rfalco
