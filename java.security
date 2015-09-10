@@ -72,7 +72,7 @@ security.provider.10=sun.security.pkcs11.SunPKCS11 ${java.home}/lib/security/nss
 # On Windows systems, the URLs file:/dev/random and file:/dev/urandom
 # enables use of the Microsoft CryptoAPI seed functionality.
 #
-securerandom.source=file:/dev/urandom
+securerandom.source=file:/dev/./urandom
 #
 # The entropy gathering device is described as a URL and can also
 # be specified with the system property "java.security.egd". For example,
