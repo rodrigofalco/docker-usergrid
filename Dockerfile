@@ -67,6 +67,9 @@ RUN mkdir /etc/service/usergrid
 ADD run.sh /etc/service/usergrid/run
 RUN chmod +x /etc/service/usergrid/run
 
+# Rfalco: Fix digiytal ocean slow tomcat start
+# http://stackoverflow.com/questions/26431922/tomcat7-starts-too-late-on-ubuntu-14-04-x64-digitalocean
+ADD java.security /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/security/java.security
 
 # Added rfalco
 # Clean up APT when done.
